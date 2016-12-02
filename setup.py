@@ -8,6 +8,9 @@ setup(
     author_email='i@guanming.me',
     url='https://github.com/lennon-guan/easyflask',
     packages=find_packages(),
+    package_data={
+        '': ['*.tpl'],
+    },
     description='Flask project generator',
     include_package_data=True,
     entry_points=dict(
