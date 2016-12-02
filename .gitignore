@@ -1,0 +1,6 @@
+*.py?
+.*.sw?
+*.sw?
+easyflask.egg-info
+dist
+build
