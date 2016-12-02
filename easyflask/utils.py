@@ -22,7 +22,7 @@ def mkdir_p(root, path):
     
 def render_template(template_path, **kwargs):
     src_dir = os.path.abspath(os.path.dirname(__file__))
-    template_path = os.path.join(src_dir, 'templates', template_path)
+    template_path = os.path.join(src_dir, 'templates', template_path) + '.tpl'
     with open(template_path) as inf:
         template_str = inf.read()
         output = template_str.format(**kwargs)
