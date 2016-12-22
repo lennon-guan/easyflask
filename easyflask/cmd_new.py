@@ -1,5 +1,7 @@
 import os
 import os.path as osp
+import string
+import random
 from cmds import register_cmd
 from utils import *
 
@@ -10,10 +12,15 @@ def _build_root(project_root):
 
 def _build_config(project_root):
     rewrite_file(project_root, 'config/__init__.py')
-    rewrite_file(project_root, 'config/default.py')
+    all_chars = string.ascii_letters + string.digits
+    secret_key = ''.join(random.choice(all_chars) for _ in range(20))
+    rewrite_file(project_root, 'config/default.py', secret_key=secret_key)
 
 def _build_application(project_root):
     create_file(project_root, 'application/__init__.py')
+
+def _build_admin(project_root):
+    create_file(project_root, 'application/admin/__init__.py')
 
 @register_cmd
 def cmd_new(args):
@@ -27,3 +34,4 @@ def cmd_new(args):
     _build_root(project_root) 
     _build_config(project_root)
     _build_application(project_root)
+    _build_admin(project_root)

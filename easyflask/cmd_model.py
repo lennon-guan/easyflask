@@ -1,4 +1,5 @@
 import os
+import re
 from cmds import register_cmd
 from utils import *
 
@@ -58,3 +59,11 @@ def cmd_model(args):
 
     with open(os.path.join(project_root, 'application', 'models', '__init__.py'), 'w') as outf:
         outf.write(''.join(code_lines))
+
+    # find database config, add if not exists
+    default_config_lines = open(os.path.join(project_root, 'config', 'default.py')).readlines()
+    db_config = filter(lambda l: re.match(r'^    DATABASE\s*=', l) is not None, default_config_lines)
+    if not db_config:
+        default_config_lines.append('    DATABASE    = \'sqlite:///tmp.db\'\n')
+    with open(os.path.join(project_root, 'config', 'default.py'), 'w') as outf:
+        outf.write(''.join(default_config_lines))

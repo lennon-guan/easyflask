@@ -15,6 +15,7 @@ def create_app():
     _init_db(app)
     _init_templates(app)
     _init_blueprints(app)
+    _init_admin(app)
 
     return app
 
@@ -55,3 +56,10 @@ def _init_blueprints(app):
     pass
     # END IMPORT BLUEPRINTS
 
+def _init_admin(app):
+    # import flask_admin
+    # from application.models import *
+    # from application.admin.xxx_modelview import XXXModelView
+    # admin_app = flask_admin.Admin(app, name='Your Admin Name')
+    # admin_app.add_view(XXXModelView(XXXModel, name='XXX'))
+    pass
