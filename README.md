@@ -34,5 +34,5 @@ easyflask controller <blueprint-name> <controller-names, seperated by comma>
 * Create any models
 ```
 cd /path/to/project
-easyflask controller <model-names, seperated by comma>
+easyflask model <model-names, seperated by comma>
 ```
